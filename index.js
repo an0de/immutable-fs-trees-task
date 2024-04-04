@@ -35,7 +35,7 @@ const printNode = (node, pad = '') => {
   const {
     name, type, meta, children = [],
   } = node;
-  console.log(pad, name, type, Object.keys(meta).length === 0 ? '' : meta);
+  console.log(pad, name, '#', type, Object.keys(meta).length === 0 ? '' : `meta: ${JSON.stringify(meta)}`);
   const newpad = `${pad}  `;
   for (const child of children) {
     printNode(child, newpad);
