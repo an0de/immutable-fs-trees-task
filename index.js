@@ -32,8 +32,10 @@ const tree = mkdir(
 );
 
 const printNode = (node, pad = '') => {
-  const { name, meta, children = [] } = node;
-  console.log(pad, name, meta || '');
+  const {
+    name, type, meta, children = [],
+  } = node;
+  console.log(pad, name, type, Object.keys(meta).length === 0 ? '' : meta);
   const newpad = `${pad}  `;
   for (const child of children) {
     printNode(child, newpad);
