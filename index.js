@@ -1,5 +1,5 @@
 import {
-  mkfile, mkdir, map,
+  mkfile, mkdir,
 } from '@hexlet/immutable-fs-trees';
 
 const tree = mkdir(
@@ -31,10 +31,13 @@ const tree = mkdir(
   { hidden: true },
 );
 
-const callbackFn = (node) => {
-  const { name } = node;
-  const newName = name.toUpperCase();
-  return { ...node, name: newName };
+const printNode = (node, pad = '') => {
+  const { name, meta, children = [] } = node;
+  console.log(pad, name, meta || '');
+  const newpad = `${pad}  `;
+  for (const child of children) {
+    printNode(child, newpad);
+  }
 };
 
-console.log(map(callbackFn, tree));
+printNode(tree);
